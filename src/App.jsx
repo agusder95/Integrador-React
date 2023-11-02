@@ -1,10 +1,24 @@
+import { AppWrapper } from "./AppStyle";
 import MyRoutes from "./routes/MyRoutes";
+
+/* import api from "./utils/api.js";
+
+async function fetchData() {
+  try{
+    const response = await api.get("/test");
+    console.log(response.data)
+  }catch(err){
+    console.log(err)
+  }
+}
+
+fetchData() */
 
 function App() {
   return (
-    <div>
+    <AppWrapper>
       <MyRoutes />
-    </div>
+    </AppWrapper>
   );
 }
 

@@ -1,15 +1,29 @@
 import { createGlobalStyle } from "styled-components";
+import { colors } from "./colors";
 
 export const GlobalStyle = createGlobalStyle`
-     *{
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
-          scroll-behavior: smooth;
-     }
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+        @media screen and (min-width: 320px){
+            font-size:small;
+        }
+        @media screen and (min-width: 768px){
+            font-size:medium;
+        }
+        @media screen and (min-width: 1024px){
+            font-size:large;
+        }
+    }
 
-     ul,li{
-        list-style: none;
+    body{
+        background-color: ${colors.mainWhite};
+    }
+
+    ul,ol{
+        list-style-type: none;
     }
 
     a{
