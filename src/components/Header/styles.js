@@ -42,7 +42,7 @@ export const HeaderCategoriesContainer = styled.div`
     color: ${colors.mainWhite};
     overflow-y: hidden;
     li{
-      margin-right:10px;
+      margin-right:15px;
       padding:.5rem 0 1rem;
       flex: 0 0 auto;
       &:first-child{
@@ -53,6 +53,7 @@ export const HeaderCategoriesContainer = styled.div`
 `;
 
 export const LogoContainer = styled.div`
+  cursor: pointer;
   @media screen and (min-width: 320px) {
     height: 60px;
   }
