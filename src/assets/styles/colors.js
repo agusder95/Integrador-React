@@ -7,6 +7,7 @@ export const colors = {
 	red: '#F45B69',
 	greenDark: '#36453B',
 	green:'#226F54',
+	heroBg: '#adebff',
 };
 
 

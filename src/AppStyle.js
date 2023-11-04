@@ -3,19 +3,19 @@ import { colors } from './assets/styles/colors';
 
 export const AppWrapper = styled.div`
   max-width:1500px;
-  margin: 0 auto;
-  background-color: ${colors.mainWhite};
+  margin:auto;
+  background-color: ${colors.secondary};
 
   @media screen and (min-width: 320px) {
-     margin-top:150px;
+     padding-top:200px;
   }
 
   @media screen and (min-width: 768px) {
-     margin-top:150px;
+   padding-top:200px;
   }
 
   @media screen and (min-width: 1024px) {
-     margin-top:200px;
+   padding-top:250px;
   }
 
 `;

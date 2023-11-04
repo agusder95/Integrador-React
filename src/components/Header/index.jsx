@@ -41,10 +41,18 @@ const Header = () => {
     };
   }, []);
 
+  const renderCategories = () => {
+    return categories.map((category, index) => (
+      <li key={index}>
+        <a>{category}</a>
+      </li>
+    ));
+  };
+
   return (
     <HeaderWrapper>
       <HeaderContainer $shrink={isScrolled}>
-        <LogoContainer>
+        <LogoContainer onClick={()=>{window.location.href = "/"}}>
           <Image src={Logo} alt={"Logo"} />
         </LogoContainer>
         <GeneralContainer>
@@ -64,9 +72,7 @@ const Header = () => {
       </HeaderContainer>
       <HeaderCategoriesContainer>
         <ul>
-          {categories.map((category, index) => (
-            <li key={index}><a>{category}</a></li>
-          ))}
+          {renderCategories()}
         </ul>
       </HeaderCategoriesContainer>
     </HeaderWrapper>
