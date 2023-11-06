@@ -1,8 +1,11 @@
 import React from 'react'
+import { DummyWrapper } from './styles'
 
 const Dummy = () => {
   return (
-    <div>Soy un Dummy</div>
+    <DummyWrapper>
+      <h1>We are working on it</h1>
+    </DummyWrapper>
   )
 }
 

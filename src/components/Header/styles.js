@@ -63,7 +63,7 @@ export const LogoContainer = styled.div`
   }
 
   @media screen and (min-width: 1024px) {
-    height: 100px;
+    height: 90px;
   }
 `;
 

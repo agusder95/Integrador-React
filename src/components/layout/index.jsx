@@ -3,13 +3,14 @@
 import React from 'react'
 import Header from '../Header'
 import { LayoutWrapper } from './styles'
+import Footer from '../Footer'
 
 const Layout = ({children}) => {
   return (
     <LayoutWrapper>
      <Header/>
      {children}
-     <p>footer</p>
+     <Footer/>
     </LayoutWrapper>
   )
 }
