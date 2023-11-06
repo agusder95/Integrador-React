@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 import { colors } from '../../assets/styles/colors';
+import SectionHome from '../../components/SectionHome';
 
 export const HomeWrapper = styled.div`
-  height:150vh;  /* Test, just to see scroll animation */
   background-color: ${colors.secondary};
 `;
 
-export const SectionHero = styled.section`
+export const SectionHero = styled(SectionHome)`
   
 `;
 
-export const SectionShop = styled.section`
+export const SectionShop = styled(SectionHome)`
   
 `;
 
-export const SectionLogin = styled.section`
+export const SectionLogin = styled(SectionHome)`
   
 `;
 

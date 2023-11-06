@@ -7,7 +7,7 @@ export const AppWrapper = styled.div`
   background-color: ${colors.secondary};
 
   @media screen and (min-width: 320px) {
-     padding-top:200px;
+     padding-top:190px;
   }
 
   @media screen and (min-width: 768px) {
@@ -15,7 +15,7 @@ export const AppWrapper = styled.div`
   }
 
   @media screen and (min-width: 1024px) {
-   padding-top:250px;
+   padding-top:234px;
   }
 
 `;
