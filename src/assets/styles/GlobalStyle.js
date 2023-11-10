@@ -32,4 +32,16 @@ export const GlobalStyle = createGlobalStyle`
         color: inherit;
     }
 
+    h1{
+        font-size: 1.5rem;
+    }
+
+    h2{
+        font-size: 1.25rem;
+    }
+
+    h3{
+        font-size: 1rem;
+    }
+
 `;

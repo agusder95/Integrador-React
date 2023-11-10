@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { colors } from "../../assets/styles/colors";
 
-export const SectionWrapper = styled.div`
+export const SectionWrapper = styled.section`
   display: flex;
   align-items: center;
   min-height: 28rem;
-  background-color: ${(props) => props.colorbg};
+
   @media only screen and (min-width: 320px) {
     flex-direction: column;
     justify-content: center;
@@ -33,8 +33,7 @@ export const SectionWrapper = styled.div`
   }
 
   @media only screen and (min-width: 768px) {
-    flex-direction: ${(props) =>
-      props.reverse === "false" ? "row" : "row-reverse"};
+    flex-direction: row;
     .txtBlock {
       width: 55vw;
       padding: 0 1rem;

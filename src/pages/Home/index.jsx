@@ -2,20 +2,20 @@ import React from "react";
 import {
   HomeWrapper,
   SectionContact,
-  SectionHero,
-  SectionLogin,
+  PricingCardContainer,
   SectionPlan,
-  SectionShop,
 } from "./styles";
-import { colors } from "../../assets/styles/colors";
 import HeroImg from "../../assets/images/landing/heroImage.jpg";
 import ShopImg from "../../assets/images/landing/shopping-cart.png";
 import LoginImg from "../../assets/images/landing/Login.png";
+import { Link } from "react-router-dom";
+import SectionHome from "../../components/SectionHome";
+import PricingCard from "../../components/PricingCard";
 const Home = () => {
   return (
     <HomeWrapper>
-      <SectionHero
-        colorbg={colors.heroBg}
+      <SectionHome
+        className={"hero"}
         childText={
           <>
             <h1>Welcome to Marketyfy - Your Ultimate Shopping Destination!</h1>
@@ -26,15 +26,16 @@ const Home = () => {
             </p>
             <p>
               Start your online shopping journey with us today and make every
-              purchase a delightful experience. <a href="/Dummy">Shop Now</a> to
-              discover the world of convenience, quality, and savings.
+              purchase a delightful experience.{" "}
+              <Link to="/Dummy">Shop Now</Link> to discover the world of
+              convenience, quality, and savings.
             </p>
           </>
         }
         childImg={HeroImg}
       />
-      <SectionShop
-        colorbg={colors.allWhite}
+      <SectionHome
+        className={"shop"}
         childText={
           <>
             <h1>Explore Our Wide Range of Products</h1>
@@ -50,23 +51,45 @@ const Home = () => {
           </>
         }
         childImg={ShopImg}
-        reverse={true}
       />
-      <SectionLogin
-        colorbg={colors.secWhite}
+      <SectionHome
+        className={"login"}
         childText={
           <>
             <h1>Login to your account</h1>
             <p>
-              Already a member? Great to see you again! Log in to your Marketyfy account to access your saved items, track your orders,
-              and continue your shopping journey.
+              Already a member? Great to see you again! Log in to your Marketyfy
+              account to access your saved items, track your orders, and
+              continue your shopping journey.
             </p>
-            <a href="/Dummy" style={{ textAlign: "center" }}>Login or Sign Up</a>
+            <Link to="/Dummy" style={{ textAlign: "center" }}>
+              Login or Sign Up
+            </Link>
           </>
         }
         childImg={LoginImg}
       />
-      <SectionPlan>Plan</SectionPlan>
+      <SectionPlan>
+        <h1>Choose your plan</h1>
+        <PricingCardContainer>
+          <PricingCard className={"free"} title={"Free"} price={"$0"}>
+            <li>No coupon</li>
+            <li>Slow shipping</li>
+            <li>Purchase Limit $100</li>
+          </PricingCard>
+          <PricingCard className={"basic"} title={"Basic"} price={"$50"}>
+            <li>Limited coupon</li>
+            <li>Normal shipping</li>
+            <li>Purchase Limit $1000</li>
+          </PricingCard>
+          <PricingCard className={"premium"} title={"Premium"} price={"$100"}>
+            <li>Unlimited coupon</li>
+            <li>Special offers</li>
+            <li>Fast shipping</li>
+            <li>No purchase limit</li>
+          </PricingCard>
+        </PricingCardContainer>
+      </SectionPlan>
       <SectionContact>Contact</SectionContact>
     </HomeWrapper>
   );
