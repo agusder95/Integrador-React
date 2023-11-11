@@ -12,6 +12,7 @@ export const colors = {
 	green:'#226F54',
 	heroBg: '#adebff',
 	orange:'#fe9443',
+	violet:'#e3e3ff',
 };
 
 
