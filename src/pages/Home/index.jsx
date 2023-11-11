@@ -1,16 +1,18 @@
 import React from "react";
 import {
   HomeWrapper,
-  SectionContact,
   PricingCardContainer,
   SectionPlan,
 } from "./styles";
 import HeroImg from "../../assets/images/landing/heroImage.jpg";
 import ShopImg from "../../assets/images/landing/shopping-cart.png";
 import LoginImg from "../../assets/images/landing/Login.png";
+import ContactUsImg from "../../assets/images/landing/contactUs.jpg"; 
 import { Link } from "react-router-dom";
 import SectionHome from "../../components/SectionHome";
 import PricingCard from "../../components/PricingCard";
+import ContactForm from "../../components/ContactForm";
+
 const Home = () => {
   return (
     <HomeWrapper>
@@ -90,7 +92,15 @@ const Home = () => {
           </PricingCard>
         </PricingCardContainer>
       </SectionPlan>
-      <SectionContact>Contact</SectionContact>
+      <SectionHome
+        className={"contactUs"}
+        childText={
+          <ContactForm />
+        }
+        childImg={ContactUsImg}
+      >
+        
+      </SectionHome>
     </HomeWrapper>
   );
 };

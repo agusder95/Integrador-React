@@ -15,6 +15,9 @@ export const HomeWrapper = styled.div`
   .login{
     background-color: ${colors.secWhite};
   }
+  .contactUs{
+    background-color: ${colors.violet};
+  }
 `;
 
 
@@ -39,8 +42,4 @@ export const PricingCardContainer = styled.div`
     margin: .5rem 0;
   }
 
-`;
-
-export const SectionContact = styled.section`
-  
 `;

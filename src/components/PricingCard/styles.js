@@ -5,7 +5,7 @@ export const PricingCardWrapper = styled.div`
   position: relative;
   display: flex;
   width: 18rem;
-  height: 25rem;
+  height: 27rem;
   padding: 1rem;
   margin: 1rem;
   flex-direction: column;
