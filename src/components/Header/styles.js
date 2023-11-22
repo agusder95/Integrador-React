@@ -11,6 +11,18 @@ export const HeaderWrapper = styled.header`
   position: fixed;
   z-index: 99;
   top: 0;
+  transition: height 0.5s ease;
+  @media screen and (min-width: 320px) {
+    height: ${(props) => (props.$shrink ? 7 : 10)}rem;
+  }
+  
+  @media screen and (min-width: 768px) {
+    height: ${(props) => (props.$shrink ? 7 : 10)}rem;
+  }
+  
+  @media screen and (min-width: 1024px) {
+    height: ${(props) => (props.$shrink ? 8 : 12)}rem;
+  }
 `;
 
 export const HeaderContainer = styled.div`
@@ -18,34 +30,38 @@ export const HeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   transition: height 0.5s ease;
-  @media screen and (min-width: 320px) {
+  padding-top: 1rem;
+  /* @media screen and (min-width: 320px) {
     height: ${(props) => (props.$shrink ? 80 : 150)}px;
   }
-
+  
   @media screen and (min-width: 768px) {
     height: ${(props) => (props.$shrink ? 100 : 150)}px;
   }
-
+  
   @media screen and (min-width: 1024px) {
     height: ${(props) => (props.$shrink ? 100 : 180)}px;
-  }
+  } */
 `;
 
 export const HeaderCategoriesContainer = styled.div`
-
+  height:100%;
   display:flex;
-  align-items:flex-end;
+  justify-content:flex-end;
+  align-items:center;
+  padding-right:5rem;
+  
   ul{
     display: flex;
-    justify-content:flex-start;
+    justify-content:space-evenly;
     align-items:center;
     color: ${colors.mainWhite};
     overflow-y: hidden;
     li{
       margin-right:15px;
-      padding:.5rem 0 1rem;
+      padding:.5rem 5rem 0 0;
       flex: 0 0 auto;
-      &:first-child{
+      &:last-child{
         margin-left: 10px;
       }
     }
@@ -54,16 +70,17 @@ export const HeaderCategoriesContainer = styled.div`
 
 export const LogoContainer = styled.div`
   cursor: pointer;
+  transition: height 0.5s ease;
   @media screen and (min-width: 320px) {
-    height: 60px;
+    height:  ${(props) => (props.$shrink ?2 : 3)}rem;
   }
 
   @media screen and (min-width: 768px) {
-    height: 100px;
+    height:  ${(props) => (props.$shrink ?2.5 : 4)}rem;
   }
 
   @media screen and (min-width: 1024px) {
-    height: 90px;
+    height:  ${(props) => (props.$shrink ?2.5 : 5)}rem;
   }
 `;
 

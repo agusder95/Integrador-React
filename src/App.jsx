@@ -1,4 +1,4 @@
-import { AppWrapper } from "./AppStyle";
+/* import { AppWrapper } from "./AppStyle"; */
 import MyRoutes from "./routes/MyRoutes";
 
 /* import api from "./utils/api.js";
@@ -16,15 +16,16 @@ fetchData() */
 
 function App() {
   return (
-    <AppWrapper>
+    <div>
       <MyRoutes />
-    </AppWrapper>
+    </div>
   );
 }
 
 export default App;
 
-{/* <nav>
+{
+  /* <nav>
   <ul>
     <li>
       <a href="/">Home</a>
@@ -34,4 +35,5 @@ export default App;
     </li>
   </ul>
 </nav>;
- */}
+ */
+}

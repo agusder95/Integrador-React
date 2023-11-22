@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   CartContainer,
   GeneralContainer,
@@ -13,13 +14,16 @@ import { FaUser, FaCartShopping } from "react-icons/fa6";
 import Logo from "../../assets/images/Logo.png";
 import { IconContext } from "react-icons";
 import { fetchApi } from "../../utils/api";
+import HamburgerMenu from "../HambMenu";
+import Button from "../Button";
+import ScrollToTop from "../ScrollToTop";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(0);
-  const [categories, setCategories] = useState([]);
+  /* const [categories, setCategories] = useState([]); */
   const [amount, setAmount] = useState(0);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const fetchCategories = async () => {
       try {
         const fetchedData = await fetchApi("/products/categories");
@@ -29,9 +33,10 @@ const Header = () => {
       }
     };
     fetchCategories();
-  }, []);
+  }, []); */
 
   useEffect(() => {
+    ScrollToTop();
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -41,20 +46,32 @@ const Header = () => {
     };
   }, []);
 
-  const renderCategories = () => {
+  /* const renderCategories = () => {
     return categories.map((category, index) => (
       <li key={index}>
         <a>{category}</a>
       </li>
     ));
-  };
+  }; */
+  
 
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if(section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }else{
+      window.location.href = '/';
+    }
+  }
+  
   return (
-    <HeaderWrapper>
-      <HeaderContainer $shrink={isScrolled}>
-        <LogoContainer onClick={()=>{window.location.href = "/"}}>
-          <Image src={Logo} alt={"Logo"} />
-        </LogoContainer>
+    <HeaderWrapper $shrink={isScrolled}>
+      <HeaderContainer>
+        <Link to="/" onClick={() => ScrollToTop()}>
+          <LogoContainer $shrink={isScrolled}>
+            <Image src={Logo} alt={"Logo"} />
+          </LogoContainer>
+        </Link>
         <GeneralContainer>
           <UserContainer>
             <IconContext.Provider value={{ className: "icons-header" }}>
@@ -71,8 +88,19 @@ const Header = () => {
         </GeneralContainer>
       </HeaderContainer>
       <HeaderCategoriesContainer>
+        {/* <HamburgerMenu className={"HamburgerMenu"}>
+          <ul>{renderCategories()}</ul>
+        </HamburgerMenu> */}
         <ul>
-          {renderCategories()}
+          <li><Link to='' >Login</Link></li>
+          <li><Link to="/Dummy">Dummy </Link></li>
+          <li><Link to="/Shop">Shop</Link></li>
+          {/* <li><Link to={{
+            pathname:"/",
+            hash:'#contactUs',
+            
+          }}>contactUs</Link></li> */}
+          <li><p onClick={()=>scrollToSection('contactUs')}>ContactUs</p></li>
         </ul>
       </HeaderCategoriesContainer>
     </HeaderWrapper>
