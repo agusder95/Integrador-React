@@ -13,27 +13,12 @@ import {
 import { FaUser, FaCartShopping } from "react-icons/fa6";
 import Logo from "../../assets/images/Logo.png";
 import { IconContext } from "react-icons";
-import { fetchApi } from "../../utils/api";
 import HamburgerMenu from "../HambMenu";
-import Button from "../Button";
 import ScrollToTop from "../ScrollToTop";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(0);
-  /* const [categories, setCategories] = useState([]); */
   const [amount, setAmount] = useState(0);
-
-  /* useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const fetchedData = await fetchApi("/products/categories");
-        setCategories(fetchedData);
-      } catch (err) {
-        console.log("Error fetching data: ", err);
-      }
-    };
-    fetchCategories();
-  }, []); */
 
   useEffect(() => {
     ScrollToTop();
@@ -46,24 +31,6 @@ const Header = () => {
     };
   }, []);
 
-  /* const renderCategories = () => {
-    return categories.map((category, index) => (
-      <li key={index}>
-        <a>{category}</a>
-      </li>
-    ));
-  }; */
-  
-
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if(section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }else{
-      window.location.href = '/';
-    }
-  }
-  
   return (
     <HeaderWrapper $shrink={isScrolled}>
       <HeaderContainer>
@@ -88,20 +55,44 @@ const Header = () => {
         </GeneralContainer>
       </HeaderContainer>
       <HeaderCategoriesContainer>
-        {/* <HamburgerMenu className={"HamburgerMenu"}>
-          <ul>{renderCategories()}</ul>
-        </HamburgerMenu> */}
-        <ul>
-          <li><Link to='' >Login</Link></li>
-          <li><Link to="/Dummy">Dummy </Link></li>
-          <li><Link to="/Shop">Shop</Link></li>
-          {/* <li><Link to={{
-            pathname:"/",
-            hash:'#contactUs',
-            
-          }}>contactUs</Link></li> */}
-          <li><p onClick={()=>scrollToSection('contactUs')}>ContactUs</p></li>
-        </ul>
+        <HamburgerMenu className={"HMHeader"}>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="">Login</Link>
+            </li>
+            <li>
+              <Link to="/Dummy">Dummy </Link>
+            </li>
+            <li>
+              <Link to="/Shop">Shop</Link>
+            </li>
+            <li>
+              <Link to="/Contact">Contact</Link>
+            </li>
+          </ul>
+        </HamburgerMenu>
+        <div className="menu2">
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="">Login</Link>
+            </li>
+            <li>
+              <Link to="/Dummy">Dummy </Link>
+            </li>
+            <li>
+              <Link to="/Shop">Shop</Link>
+            </li>
+            <li>
+              <Link to="/Contact">Contact</Link>
+            </li>
+          </ul>
+        </div>
       </HeaderCategoriesContainer>
     </HeaderWrapper>
   );

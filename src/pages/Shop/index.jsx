@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CenterShop, ShopWrapper } from "./styles";
 import HamburgerMenu from "../../components/HambMenu";
-import { fetchApi } from "../../utils/api";
+import { fetchApi } from "../../utils/fetchApi";
 import Layout from "../../components/layout";
 
 const Shop = () => {

@@ -106,7 +106,17 @@ const Home = () => {
           <SectionHome
             id={"contactUs"}
             className={"contactUs"}
-            childText={<ContactForm />}
+            childText={
+              <>
+                <h1>Contact Us</h1>
+                <p>
+                  Have any questions or feedback? We'd love to hear from you!
+                  Fill out the form below and we'll get back to you as soon as
+                  possible.
+                </p>
+                <Link to ="/Contact" style={{ textAlign: "center" }}>Contact Us</Link>
+              </>
+            }
             childImg={ContactUsImg}
           ></SectionHome>
         </CenterHome>

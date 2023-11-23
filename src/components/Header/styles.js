@@ -5,7 +5,7 @@ import { colors } from "../../assets/styles/colors";
 export const HeaderWrapper = styled.header`
   display: flex;
   flex-direction: column;
-  
+
   background-color: ${colors.primary};
   width: 100%;
   position: fixed;
@@ -15,11 +15,11 @@ export const HeaderWrapper = styled.header`
   @media screen and (min-width: 320px) {
     height: ${(props) => (props.$shrink ? 7 : 10)}rem;
   }
-  
+
   @media screen and (min-width: 768px) {
     height: ${(props) => (props.$shrink ? 7 : 10)}rem;
   }
-  
+
   @media screen and (min-width: 1024px) {
     height: ${(props) => (props.$shrink ? 8 : 12)}rem;
   }
@@ -31,39 +31,53 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   transition: height 0.5s ease;
   padding-top: 1rem;
-  /* @media screen and (min-width: 320px) {
-    height: ${(props) => (props.$shrink ? 80 : 150)}px;
-  }
-  
-  @media screen and (min-width: 768px) {
-    height: ${(props) => (props.$shrink ? 100 : 150)}px;
-  }
-  
-  @media screen and (min-width: 1024px) {
-    height: ${(props) => (props.$shrink ? 100 : 180)}px;
-  } */
 `;
 
 export const HeaderCategoriesContainer = styled.div`
-  height:100%;
-  display:flex;
-  justify-content:flex-end;
-  align-items:center;
-  padding-right:5rem;
-  
-  ul{
-    display: flex;
-    justify-content:space-evenly;
-    align-items:center;
-    color: ${colors.mainWhite};
-    overflow-y: hidden;
-    li{
-      margin-right:15px;
-      padding:.5rem 5rem 0 0;
-      flex: 0 0 auto;
-      &:last-child{
-        margin-left: 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  @media screen and (min-width: 320px) {
+    justify-content: flex-start;
+    .HMHeader {
+      display: flex;
+      ul{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:space-around;
+        li{
+          margin-bottom:2rem;
+        }
       }
+    }
+    .menu2 {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    justify-content: flex-end;
+    .HMHeader {
+      display: none;
+    }
+    .menu2 {
+      display: flex;
+      width: 100%;
+      ul {
+        display: flex;
+        justify-content: space-evenly;
+        flex-grow: 1;
+        align-items: center;
+        color: ${colors.mainWhite};
+      }
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .menu2 {
+      max-width: 950px;
     }
   }
 `;
@@ -72,15 +86,15 @@ export const LogoContainer = styled.div`
   cursor: pointer;
   transition: height 0.5s ease;
   @media screen and (min-width: 320px) {
-    height:  ${(props) => (props.$shrink ?2 : 3)}rem;
+    height: ${(props) => (props.$shrink ? 2 : 3)}rem;
   }
 
   @media screen and (min-width: 768px) {
-    height:  ${(props) => (props.$shrink ?2.5 : 4)}rem;
+    height: ${(props) => (props.$shrink ? 2.5 : 4)}rem;
   }
 
   @media screen and (min-width: 1024px) {
-    height:  ${(props) => (props.$shrink ?2.5 : 5)}rem;
+    height: ${(props) => (props.$shrink ? 2.5 : 5)}rem;
   }
 `;
 
