@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { ImageWrapper } from "../Image/styles";
 import { colors } from "../../assets/styles/colors";
+import HamburgerMenu from "../HambMenu";
 
 export const HeaderWrapper = styled.header`
   display: flex;
@@ -33,6 +34,34 @@ export const HeaderContainer = styled.div`
   padding-top: 1rem;
 `;
 
+export const HMHeader = styled(HamburgerMenu)`
+  @media screen and (min-width: 320px) {
+    .colorBar{
+      height:3rem;
+      width: 100%;
+      background-color: ${colors.grey};
+      border-top-right-radius:10px;
+      border-top-left-radius:10px;
+    }
+    .dataContent {
+      background-color: ${colors.mainWhite};
+    }
+    ul {
+      padding-top:20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      li {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+  @media screen and (min-width: 768px){
+    display: none;
+  }
+`;
+
 export const HeaderCategoriesContainer = styled.div`
   height: 100%;
   display: flex;
@@ -40,18 +69,7 @@ export const HeaderCategoriesContainer = styled.div`
 
   @media screen and (min-width: 320px) {
     justify-content: flex-start;
-    .HMHeader {
-      display: flex;
-      ul{
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        justify-content:space-around;
-        li{
-          margin-bottom:2rem;
-        }
-      }
-    }
+    margin-left:1rem;
     .menu2 {
       display: none;
     }
@@ -59,9 +77,7 @@ export const HeaderCategoriesContainer = styled.div`
 
   @media screen and (min-width: 768px) {
     justify-content: flex-end;
-    .HMHeader {
-      display: none;
-    }
+
     .menu2 {
       display: flex;
       width: 100%;

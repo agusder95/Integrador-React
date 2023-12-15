@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { HamburgerMenuWrapper, MenuContent, ToggleButon, Bar } from "./styles";
+import MenuContext from "../../context/MenuHmb";
 
 const HamburgerMenu = ({ children, className }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
+  const {menuOpen, setMenuOpen} = useContext(MenuContext)
   const toggleMenu = () => setMenuOpen(prevMenuOpen => !prevMenuOpen);
   return (
     <HamburgerMenuWrapper className={` ${className}`} >
@@ -12,7 +12,7 @@ const HamburgerMenu = ({ children, className }) => {
         <Bar $menuopen={menuOpen}/>
         <Bar $menuopen={menuOpen}/>
       </ToggleButon>
-      <MenuContent $menuopen={menuOpen} >{children}</MenuContent>
+      <MenuContent $menuopen={menuOpen} className="dataContent" >{children}</MenuContent>
     </HamburgerMenuWrapper>
   );
 };

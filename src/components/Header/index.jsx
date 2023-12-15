@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import {
   CartContainer,
   GeneralContainer,
+  HMHeader,
   HeaderCategoriesContainer,
   HeaderContainer,
   HeaderWrapper,
@@ -13,13 +14,14 @@ import {
 import { FaUser, FaCartShopping } from "react-icons/fa6";
 import Logo from "../../assets/images/Logo.png";
 import { IconContext } from "react-icons";
-import HamburgerMenu from "../HambMenu";
 import ScrollToTop from "../ScrollToTop";
+import MenuContext from "../../context/MenuHmb";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(0);
   const [amount, setAmount] = useState(0);
-
+  const { menuOpen, setMenuOpen } = useContext(MenuContext);
+  const toggleMenu = () => setMenuOpen((prevMenuOpen) => !prevMenuOpen);
   useEffect(() => {
     ScrollToTop();
     const handleScroll = () => {
@@ -55,8 +57,9 @@ const Header = () => {
         </GeneralContainer>
       </HeaderContainer>
       <HeaderCategoriesContainer>
-        <HamburgerMenu className={"HMHeader"}>
-          <ul>
+        <HMHeader>
+          <div className="colorBar"></div>
+          <ul onClick={toggleMenu}>
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -73,7 +76,8 @@ const Header = () => {
               <Link to="/Contact">Contact</Link>
             </li>
           </ul>
-        </HamburgerMenu>
+        </HMHeader>
+
         <div className="menu2">
           <ul>
             <li>

@@ -1,6 +1,8 @@
 /* import { AppWrapper } from "./AppStyle"; */
+import { Provider } from "react-redux";
+import { MenuContextProvider } from "./context/MenuHmb";
 import MyRoutes from "./routes/MyRoutes";
-
+import store from "./redux/store/store"
 /* import api from "./utils/api.js";
 
 async function fetchData() {
@@ -17,7 +19,11 @@ fetchData() */
 function App() {
   return (
     <div>
-      <MyRoutes />
+      <Provider store={store}>
+        <MenuContextProvider>
+          <MyRoutes />
+        </MenuContextProvider>
+      </Provider>
     </div>
   );
 }

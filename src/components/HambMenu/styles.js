@@ -12,24 +12,26 @@ export const HamburgerMenuWrapper = styled.div`
 
 export const ToggleButon = styled.button`
   z-index: 1;
+  background-color: transparent;
+  border:none;
 `;
 
 export const Bar = styled.div`
   width: 100%;
   height: 3px;
-  margin: 3px 0;
-  background-color: #333;
+  margin: 6px 0;
+  background-color: white;
   transition: 0.4s;
   &:nth-child(1) {
     transform: ${(props) =>
-      props.$menuopen ? "rotate(-40deg) translate(-3px, 4px)" : "none"};
+      props.$menuopen ? "rotate(45deg) translate(7px, 7px);" : "none"};
   }
   &:nth-child(2) {
     opacity: ${(props) => (props.$menuopen ? "0" : "1")};
   }
   &:nth-child(3) {
     transform: ${(props) =>
-      props.$menuopen ? "rotate(40deg) translate(-5px, -5px)" : "none"};
+      props.$menuopen ? " rotate(-45deg) translate(6px, -7px);" : "none"};
   }
 `;
 
@@ -43,8 +45,8 @@ export const MenuContent = styled.div`
   z-index: 0;
   transition: left 0.3s ease-in-out;
   top: 0;
-  left: ${(props) => (props.$menuopen ? -1 : -16)}rem;
-  padding: 4rem 4rem 0;
+  left: ${(props) => (props.$menuopen ? -1 : -20)}rem;
+  /* padding: 0 4rem 0; */
   position: absolute;
   background-color: springgreen;
   width: 15rem;

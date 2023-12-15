@@ -54,7 +54,7 @@ const Home = () => {
                   for the latest fashion trends, high-tech gadgets, home
                   essentials, or unique gifts, you'll find it all right here.
                 </p>
-                <a href="/Dummy" style={{ textAlign: "center" }}>
+                <a href="/Shop" style={{ textAlign: "center" }}>
                   Go to shop
                 </a>
               </>
