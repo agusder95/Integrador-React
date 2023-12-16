@@ -3,7 +3,6 @@ import { CenterWrapper } from "../../components/Center/styles";
 import { colors } from "../../assets/styles/colors";
 import { keyframes } from "styled-components";
 
-
 export const ShopWrapper = styled.div``;
 
 export const CenterShop = styled(CenterWrapper)`
@@ -12,6 +11,23 @@ export const CenterShop = styled(CenterWrapper)`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .moreBtn {
+    padding: 0;
+    width: 37px;
+    height: 37px;
+    background-color: transparent;
+    border: none;
+    .iconMore{
+      width: 37px;
+      height: 37px;
+      color:black;
+    }
+    .noActive{
+      color: ${colors.grey};
+    }
+    
+  }
 `;
 
 const spin = keyframes`
@@ -36,10 +52,14 @@ export const TopContainer = styled.div`
   width: 100%;
   padding: 2rem 0;
   margin-top: -1rem;
-  background-color: ${colors.green};
+  background-color: ${colors.secondary};
+  color: ${colors.mainWhite};
   display: flex;
   flex-direction: column;
   align-items: center;
+  h2 {
+    font-weight: 1;
+  }
   ul {
     display: flex;
     flex-wrap: wrap;
@@ -49,24 +69,47 @@ export const TopContainer = styled.div`
       flex: 0 0 auto;
     }
   }
-  .active{
+  .active {
     background-color: ${colors.orange};
   }
 `;
 
 export const CategoryContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
+  width: 90%;
+
+  .search {
+    margin: 1rem 0;
+  }
+`;
+
+export const InputContainer = styled.div`
+  position: relative;
+  max-width: 80%;
+  input {
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    padding-left: 10px;
+  }
+  .reset {
+    position: absolute;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+  }
 `;
 
 export const SelectCategory = styled.select`
-  
+  border-radius: 10px;
 `;
 
 export const OptionsCategory = styled.option`
-  /* background-color: ${colors.violet};
   padding: 0.5rem 1rem;
   border-radius: 10px;
-  margin:0.1rem 0.5rem; */
+  margin: 0.1rem 0.5rem;
 `;

@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 export const CategoryPrevWrapper = styled.section`
   width: 100%;
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  
+  justify-content: center; */
+  h1{
+    margin-top: 2rem;
+    text-align: center;
+  }
 `;
 
 export const ShopCardsContainer = styled.div`
-  display:flex;
-  flex-direction:row;
-  overflow-y:scroll;
-  align-items:center;
-  justify-content:space-around;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 `;

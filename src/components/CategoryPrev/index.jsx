@@ -2,24 +2,27 @@ import React from "react";
 import { CategoryPrevWrapper, ShopCardsContainer } from "./styles";
 import ShopCard from "../ShopCard";
 
-const CategoryPrev = ({ productsData }) => {
+const CategoryPrev = ({ productsData, category }) => {
   const products = productsData;
-  
+
   return (
     <CategoryPrevWrapper>
+      {category === "" ? <h1>all</h1> : <h1>{category.split("/").pop()}</h1>}
       {/* <ul>
         {products.map((product) => (
           <li key={product.id}>{product.title}</li>
         ))}
       </ul> */}
-      {products.map(products=>(
-        <ShopCard 
-          key={products.id}
-          Img={products.thumbnail}
-          title={products.title}
-          price={products.price}
+      <ShopCardsContainer>
+        {products.map((products) => (
+          <ShopCard
+            key={products.id}
+            Img={products.images[0]}
+            title={products.title}
+            price={products.price}
           />
-      ))}
+        ))}
+      </ShopCardsContainer>
       {/* <h1>{category}</h1>
       <ShopCardsContainer>
         test 

@@ -89,7 +89,7 @@ const Home = () => {
               <PricingCard className={"basic"} title={"Basic"} price={"$50"}>
                 <li>Limited coupon</li>
                 <li>Normal shipping</li>
-                <li>Purchase Limit $1000</li>
+                <li>Purchase Limit $600</li>
               </PricingCard>
               <PricingCard
                 className={"premium"}

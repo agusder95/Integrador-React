@@ -1,24 +1,28 @@
 import React, { useState, useEffect } from "react";
+import { FaAngleDown } from "react-icons/fa";
+import { IconContext } from "react-icons";
 import {
   CategoryContainer,
   CenterShop,
+  InputContainer,
   Loader,
   OptionsCategory,
   SelectCategory,
   ShopWrapper,
   TopContainer,
 } from "./styles";
-import HamburgerMenu from "../../components/HambMenu";
-import { fetchApi } from "../../utils/fetchApi";
+import Button from "../../components/Button";
 import Layout from "../../components/layout";
 import CategoryPrev from "../../components/CategoryPrev";
 import useApi from "../../state/hooks/useApi";
+
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [skip, setSkip] = useState(0);
   const [category, setCategory] = useState(``);
   const [itemSerch, setItemSerch] = useState(``);
-  const productsUrl = `/products/${category}?limit=10&skip=${skip}&select=title,price,category,thumbnail,stock`;
+  const [more, setMore] = useState(true);
+  const productsUrl = `/products/${category}?limit=10&skip=${skip}&select=title,price,category,images,stock`;
   const serchUrl = `/products/search?q=${itemSerch}`;
 
   const {
@@ -40,6 +44,17 @@ const Shop = () => {
   } = useApi(productsUrl);
 
   useEffect(() => {
+     if (dataProducts && dataProducts.total > products.length) {
+      setMore(true);
+    } else {
+      setMore(false);
+    }
+    if(itemSerch){
+      setMore(false);
+    }
+  }, [products]);
+
+  useEffect(() => {
     if (dataProducts && dataProducts.products) {
       setProducts((prevProducts) => {
         const newProducts = dataProducts.products.filter(
@@ -57,7 +72,9 @@ const Shop = () => {
   }, [category]);
 
   const chargueMore = () => {
-    setSkip((prevSkip) => prevSkip + 10);
+    if ((dataProducts && dataProducts.total > products.length) && !itemSerch) {
+      setSkip((prevSkip) => prevSkip + 10);
+    }
   };
 
   const changueCategory = (category) => {
@@ -73,7 +90,6 @@ const Shop = () => {
 
   const renderCategories = () => {
     let categories = ["all", ...dataCategories];
-
     return (
       <SelectCategory onChange={(e) => changueCategory(e.target.value)}>
         {categories.map((category, index) => (
@@ -88,6 +104,7 @@ const Shop = () => {
   const renderSerch = () => {
     if (dataSerch && dataSerch.products) {
       setProducts(dataSerch.products);
+      
     }
   };
 
@@ -128,31 +145,40 @@ const Shop = () => {
       <Layout>
         <CenterShop>
           <TopContainer>
-            <h1>Categories</h1>
+            <h2>Filter</h2>
             <CategoryContainer>
-              <p>Filter:</p>
+              <p>Categories:</p>
               {renderCategories()}
               <p>Search:</p>
               <form onSubmit={serchItem}>
-                <input
-                  type="text"
-                  value={itemSerch}
-                  onChange={(e) => setItemSerch(e.target.value.trimStart())}
-                />
-                <button type="button" onClick={resetSerch}>
-                  X
-                </button>
-                <button type="submit">Search</button>
+                <InputContainer>
+                  <input
+                    type="text"
+                    value={itemSerch}
+                    onChange={(e) => setItemSerch(e.target.value.trimStart())}
+                  />
+                  <button className="reset" type="button" onClick={resetSerch}>
+                    X
+                  </button>
+                </InputContainer>
+                <Button className={"search"} text={"Search"} type="submit" />
               </form>
             </CategoryContainer>
           </TopContainer>
-          <CategoryPrev productsData={products} />
-          <button className="more" onClick={() => chargueMore()}>
-            More
-          </button>
-          {/* <CategoryPrev productsData={products}  >
-           
-          </CategoryPrev> */}
+          <CategoryPrev productsData={products} category={category} />
+
+          <Button
+            className={"moreBtn"}
+            text={
+              <IconContext.Provider
+                value={{ className: `iconMore ${!more ? "noActive" : ""}` }}
+              >
+                <FaAngleDown />
+              </IconContext.Provider>
+            }
+            disabled={!more}
+            onClick={() => chargueMore()}
+          />
         </CenterShop>
       </Layout>
     </ShopWrapper>

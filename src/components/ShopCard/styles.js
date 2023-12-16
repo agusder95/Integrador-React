@@ -13,6 +13,8 @@ export const ShopCardWrapper = styled.div`
   border: 1px solid black;
   border-radius: 20px;
 
+  
+
   .shopBtn {
     position: absolute;
     bottom: 20px;
@@ -20,6 +22,22 @@ export const ShopCardWrapper = styled.div`
   } 
 `;
 
+export const ShopInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 7rem;
+  p{
+    text-align: center;
+    margin: 1rem 0;
+  }
+`;
+
 export const ShopCardImgContainer = styled.div`
-  
+  height:12rem;
+  img{
+    border-radius: 10px;
+    border: 1px solid black;
+  }
 `;
