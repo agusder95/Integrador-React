@@ -104,7 +104,6 @@ const Home = () => {
             </PricingCardContainer>
           </SectionPlan>
           <SectionHome
-            id={"contactUs"}
             className={"contactUs"}
             childText={
               <>

@@ -1,20 +1,18 @@
 import React from "react";
-import { ContactContainer, ContactWrapper } from "./styles";
+import { ContactContainer, ContactWrapper, ImgContactContainer } from "./styles";
 import Layout from "../../components/layout";
 import ContactForm from "../../components/ContactForm";
 import ContactImg from "../../assets/images/landing/contactUs.jpg";
-import SectionHome from "../../components/SectionHome";
+import Image from "../../components/Image";
 const Contact = () => {
   return (
     <ContactWrapper>
       <Layout>
         <ContactContainer>
-          <SectionHome
-            id={"contactUs"}
-            className={"contactUs"}
-            childText={<ContactForm />}
-            childImg={ContactImg}
-          />
+          <ContactForm />
+          <ImgContactContainer>
+            <Image src={ContactImg} alt={"contactImg"} />
+          </ImgContactContainer>
         </ContactContainer>
       </Layout>
     </ContactWrapper>

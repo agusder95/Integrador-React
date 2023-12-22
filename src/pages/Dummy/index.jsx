@@ -33,6 +33,7 @@ const Dummy = () => {
       <Layout>
         <CenterDummy>
           <h1>We are working on it</h1>
+          <a>fdfdssfds</a>
           <ul>
            {categories.length === 0 ? '':
               categories.flatMap((item, index) => (

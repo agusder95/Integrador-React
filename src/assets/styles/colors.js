@@ -9,6 +9,7 @@ export const colors = {
 	secondary: '#37475a',
 	red: '#F45B69',
 	greenDark: '#36453B',
+	greenBk:'#96ADC8',
 	green:'#226F54',
 	heroBg: '#adebff',
 	orange:'#fe9443',

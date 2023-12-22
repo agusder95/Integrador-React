@@ -46,7 +46,7 @@ const Header = () => {
             <IconContext.Provider value={{ className: "icons-header" }}>
               <FaUser />
             </IconContext.Provider>
-            <a>User</a>
+            
           </UserContainer>
           <CartContainer>
             <IconContext.Provider value={{ className: "icons-header" }}>
@@ -64,7 +64,7 @@ const Header = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="">Login</Link>
+              <Link to="/Login">Login</Link>
             </li>
             <li>
               <Link to="/Dummy">Dummy </Link>
@@ -84,7 +84,7 @@ const Header = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="">Login</Link>
+              <Link to="/Login">Login</Link>
             </li>
             <li>
               <Link to="/Dummy">Dummy </Link>

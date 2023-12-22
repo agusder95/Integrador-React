@@ -7,12 +7,28 @@ export const ContactWrapper = styled.div`
 `;
 
 export const ContactContainer = styled(CenterWrapper)`
-  background-color: ${colors.violet};
-  min-height: 100vh;
-  max-width: 1500px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    background-color: ${colors.violet};
+    min-height: 100vh;
+    max-width: 1500px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    
+  @media screen and (min-width: 320px) {
+    align-items: flex-start;
+  }
+  @media screen and (min-width: 768px) {
+    align-items: center;
+  }
+`;
+
+export const ImgContactContainer = styled.div`
+  @media screen and (min-width: 320px) {
+    display: none;
+  }
+  @media screen and (min-width: 768px) {
+    width:40%;
+    display:block;
+  }
 `;
