@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   LoginContainer,
   LoginWrapper,
@@ -13,13 +13,61 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import Button from "../../components/Button";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser, setLogin } from "../../redux/reducers/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [active, setActive] = useState("tab1");
   const [seePass, SetSeePass] = useState(false);
   const [seeConfPass, SetSeeConfPass] = useState(false);
+  const [errorLogin, setErrorLogin] = useState(false);
+  const navigate = useNavigate();
+  const dispatchUser = useDispatch();
+  const userData = useSelector((state) => state.userInfo);
 
-  const formik = useFormik({
+  const addNewUser = (values) => {
+    console.log(values.userName, values.password);
+    dispatchUser(
+      addUser({
+        user: values.userName,
+        pass: values.password,
+        email: values.email,
+      })
+    );
+    dispatchUser(setLogin(true));
+    navigate("/Shop");
+  };
+
+  useEffect(() => {
+    /* Local Store Data Login */
+    localStorage.setItem("userData", JSON.stringify(userData));
+  }, [userData.login]);
+
+  const loginUser = (e) => {
+    e.preventDefault();
+    const inputUser = e.target.user.value;
+    const inputPass = e.target.userPassword.value;
+
+    if ( /* Import Local Store Data Login */
+    /* const storedData = localStorage.getItem('userData');
+    const userDataLocSto = storedData ? JSON.parse(storedData) : null; */
+    
+   
+      inputUser === userData.user &&
+      inputPass ===
+        userData.pass /*  || (inputUser === userDataLocSto.user && inputPass === userDataLocSto.pass) */
+    ) {
+      dispatchUser(setLogin(true));
+      console.log("Login");
+      setErrorLogin(false);
+      navigate("/Shop");
+    } else {
+      setErrorLogin(true);
+    }
+  };
+
+  const formikReg = useFormik({
     initialValues: {
       fName: "",
       lName: "",
@@ -62,7 +110,7 @@ const Login = () => {
       ),
     }),
     onSubmit: (values) => {
-      console.log(values);
+      addNewUser(values);
     },
   });
 
@@ -89,13 +137,13 @@ const Login = () => {
           </ButtonContainer>
           <TabContent>
             <TabPanel className={active === "tab1" ? "active" : ""}>
-              <Form onSubmit={() => console.log(values)}>
+              <Form onSubmit={loginUser}>
                 <input type="text" name="user" placeholder="User" />
                 <PassContainer>
                   <input
                     type={seePass ? "text" : "password"}
-                    name="Password"
-                    placeholder="Password"
+                    name="userPassword"
+                    placeholder="userPassword"
                   />
                   <button
                     className="showPass"
@@ -105,53 +153,58 @@ const Login = () => {
                     {seePass ? <FaEyeSlash /> : <FaEye />}
                   </button>
                 </PassContainer>
-                <Button text={"Login"} className={"btnRegLog"} type={"submit"} />
+                {errorLogin ? <p>Wrong user or password</p> : null}
+                <Button
+                  text={"Login"}
+                  className={"btnRegLog"}
+                  type={"submit"}
+                />
               </Form>
             </TabPanel>
             <TabPanel className={active === "tab2" ? "active" : ""}>
-              <Form onSubmit={formik.handleSubmit}>
+              <Form onSubmit={formikReg.handleSubmit}>
                 <input
                   type="text"
                   name="fName"
                   placeholder="First Name"
-                  {...formik.getFieldProps("fName")}
+                  {...formikReg.getFieldProps("fName")}
                 />
-                {formik.touched.fName && formik.errors.fName ? (
-                  <p>{formik.errors.fName}</p>
+                {formikReg.touched.fName && formikReg.errors.fName ? (
+                  <p>{formikReg.errors.fName}</p>
                 ) : null}
                 <input
                   type="text"
                   name="lName"
                   placeholder="Last Name"
-                  {...formik.getFieldProps("lName")}
+                  {...formikReg.getFieldProps("lName")}
                 />
-                {formik.touched.lName && formik.errors.lName ? (
-                  <p>{formik.errors.lName}</p>
+                {formikReg.touched.lName && formikReg.errors.lName ? (
+                  <p>{formikReg.errors.lName}</p>
                 ) : null}
                 <input
                   type="email"
                   name="email"
                   placeholder="Email"
-                  {...formik.getFieldProps("email")}
+                  {...formikReg.getFieldProps("email")}
                 />
-                {formik.touched.email && formik.errors.email ? (
-                  <p>{formik.errors.email}</p>
+                {formikReg.touched.email && formikReg.errors.email ? (
+                  <p>{formikReg.errors.email}</p>
                 ) : null}
                 <input
                   type="text"
                   name="userName"
                   placeholder="User Name"
-                  {...formik.getFieldProps("userName")}
+                  {...formikReg.getFieldProps("userName")}
                 />
-                {formik.touched.userName && formik.errors.userName ? (
-                  <p>{formik.errors.userName}</p>
+                {formikReg.touched.userName && formikReg.errors.userName ? (
+                  <p>{formikReg.errors.userName}</p>
                 ) : null}
                 <PassContainer>
                   <input
                     type={seePass ? "text" : "password"}
                     name="password"
                     placeholder="Password"
-                    {...formik.getFieldProps("password")}
+                    {...formikReg.getFieldProps("password")}
                   />
                   <button
                     className="showPass"
@@ -161,15 +214,15 @@ const Login = () => {
                     {seePass ? <FaEyeSlash /> : <FaEye />}
                   </button>
                 </PassContainer>
-                {formik.touched.password && formik.errors.password ? (
-                  <p>{formik.errors.password}</p>
+                {formikReg.touched.password && formikReg.errors.password ? (
+                  <p>{formikReg.errors.password}</p>
                 ) : null}
                 <PassContainer>
                   <input
                     type={seeConfPass ? "text" : "password"}
                     name="confirmPassword"
                     placeholder="Confirm Password"
-                    {...formik.getFieldProps("confirmPassword")}
+                    {...formikReg.getFieldProps("confirmPassword")}
                   />
                   <button
                     className="showPass"
@@ -179,20 +232,20 @@ const Login = () => {
                     {seeConfPass ? <FaEyeSlash /> : <FaEye />}
                   </button>
                 </PassContainer>
-                {formik.touched.confirmPassword &&
-                formik.errors.confirmPassword ? (
-                  <p>{formik.errors.confirmPassword}</p>
+                {formikReg.touched.confirmPassword &&
+                formikReg.errors.confirmPassword ? (
+                  <p>{formikReg.errors.confirmPassword}</p>
                 ) : null}
                 <div className="checkbox">
                   <input
                     type="checkbox"
                     name="adult"
-                    {...formik.getFieldProps("adult")}
+                    {...formikReg.getFieldProps("adult")}
                   />
                   <label htmlFor="adult">I`m 18 years or older</label>
                 </div>
-                {formik.touched.adult && formik.errors.adult ? (
-                  <p>{formik.errors.adult}</p>
+                {formikReg.touched.adult && formikReg.errors.adult ? (
+                  <p>{formikReg.errors.adult}</p>
                 ) : null}
                 <Button text="Register" type="submit" className={"btnRegLog"} />
               </Form>

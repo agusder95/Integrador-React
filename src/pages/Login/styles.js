@@ -19,7 +19,7 @@ export const ButtonContainer = styled.div`
   justify-content: space-around;
   button {
     color: black;
-    padding:1rem;
+    padding:1rem 3rem;
     background-color: transparent;
     border:none;
     border-top-left-radius: 10px;

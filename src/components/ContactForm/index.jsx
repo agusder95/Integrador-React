@@ -83,7 +83,7 @@ const ContactForm = () => {
         />
       </Form>
       {showModal ? (
-        <Modal btnText={"Back to Home"} title={"Thank You!"} text={"We'll get back to you soon"} />
+        <Modal btnText={"Back to Home"} title={"Thank You!"} text={"We'll get back to you soon"} page={"/"} />
       ) : null}
     </ContactFormWrapper>
   );
