@@ -118,8 +118,12 @@ export const Image = styled(ImageWrapper)``;
 export const GeneralContainer = styled.div`
   display: flex;
   align-items: center;
+  position: relative;
   justify-content: space-around;
   max-width: 10rem;
+  padding:.5rem .6rem;
+  background-color: ${colors.secondary};
+  border-radius: 15px;
 
   @media screen and (min-width: 320px) {
     flex-grow: 1;
@@ -169,4 +173,16 @@ export const CartContainer = styled.div`
     top: -13px;
     color: ${colors.red};
   }
+`;
+
+export const UserMenu = styled.div`
+  width:320px;
+  min-height:500px;
+  background-color:${colors.secondary};
+  border-radius:10px;
+  position: absolute;
+  top:60px;
+  right:0px;
+  z-index:2;
+  color:${colors.mainWhite};
 `;

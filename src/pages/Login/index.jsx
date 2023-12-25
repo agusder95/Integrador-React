@@ -36,7 +36,14 @@ const Login = () => {
       })
     );
     dispatchUser(setLogin(true));
-    navigate("/Shop");
+    /* Local Store Data Login */
+    Promise.resolve(localStorage.setItem("userData", JSON.stringify(userData)))
+      .then(() => {
+        navigate("/Shop");
+      })
+      .catch((error) => {
+        console.error("Failed to save user data:", error);
+      });
   };
 
   useEffect(() => {
@@ -44,16 +51,17 @@ const Login = () => {
     localStorage.setItem("userData", JSON.stringify(userData));
   }, [userData.login]);
 
+
   const loginUser = (e) => {
     e.preventDefault();
     const inputUser = e.target.user.value;
     const inputPass = e.target.userPassword.value;
 
-    if ( /* Import Local Store Data Login */
-    /* const storedData = localStorage.getItem('userData');
+    if (
+      /* Import Local Store Data Login */
+      /* const storedData = localStorage.getItem('userData');
     const userDataLocSto = storedData ? JSON.parse(storedData) : null; */
-    
-   
+
       inputUser === userData.user &&
       inputPass ===
         userData.pass /*  || (inputUser === userDataLocSto.user && inputPass === userDataLocSto.pass) */
@@ -143,7 +151,7 @@ const Login = () => {
                   <input
                     type={seePass ? "text" : "password"}
                     name="userPassword"
-                    placeholder="userPassword"
+                    placeholder="Password"
                   />
                   <button
                     className="showPass"
