@@ -36,18 +36,18 @@ export const HeaderContainer = styled.div`
 
 export const HMHeader = styled(HamburgerMenu)`
   @media screen and (min-width: 320px) {
-    .colorBar{
-      height:3rem;
+    .colorBar {
+      height: 3rem;
       width: 100%;
       background-color: ${colors.grey};
-      border-top-right-radius:10px;
-      border-top-left-radius:10px;
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
     }
     .dataContent {
       background-color: ${colors.mainWhite};
     }
     ul {
-      padding-top:20px;
+      padding-top: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -57,7 +57,7 @@ export const HMHeader = styled(HamburgerMenu)`
       }
     }
   }
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     display: none;
   }
 `;
@@ -69,7 +69,7 @@ export const HeaderCategoriesContainer = styled.div`
 
   @media screen and (min-width: 320px) {
     justify-content: flex-start;
-    margin-left:1rem;
+    margin-left: 1rem;
     .menu2 {
       display: none;
     }
@@ -116,14 +116,18 @@ export const LogoContainer = styled.div`
 
 export const Image = styled(ImageWrapper)``;
 export const GeneralContainer = styled.div`
-  display: flex;
-  align-items: center;
   position: relative;
-  justify-content: space-around;
   max-width: 10rem;
-  padding:.5rem .6rem;
+  padding: 0.5rem 0.6rem;
   background-color: ${colors.secondary};
   border-radius: 15px;
+  
+  .iconsContainer {
+    width: 100%;
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+  }
 
   @media screen and (min-width: 320px) {
     flex-grow: 1;
@@ -176,13 +180,13 @@ export const CartContainer = styled.div`
 `;
 
 export const UserMenu = styled.div`
-  width:320px;
-  min-height:500px;
-  background-color:${colors.secondary};
-  border-radius:10px;
+  width: 320px;
+  min-height: 500px;
+  background-color: ${colors.secondary};
+  border-radius: 10px;
   position: absolute;
-  top:60px;
-  right:0px;
-  z-index:2;
-  color:${colors.mainWhite};
+  top: 60px;
+  right: 0px;
+  z-index: 2;
+  color: ${colors.mainWhite};
 `;

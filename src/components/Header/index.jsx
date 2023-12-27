@@ -17,7 +17,7 @@ import Logo from "../../assets/images/Logo.png";
 import { IconContext } from "react-icons";
 import ScrollToTop from "../ScrollToTop";
 import MenuContext from "../../context/MenuHmb";
-import { setLogin } from "../../redux/reducers/userSlice";
+import { setLogin, clearData } from "../../redux/reducers/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../Button";
 
@@ -25,6 +25,8 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(0);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [amount, setAmount] = useState(0);
+  const [deleteAccount, setDeleteAccount] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
   const { menuOpen, setMenuOpen } = useContext(MenuContext);
   const user = useSelector((state) => state.userInfo);
   const userDispatch = useDispatch();
@@ -44,27 +46,37 @@ const Header = () => {
 
   const userMenu = () => {
     setUserMenuOpen((prevUserMenuOpen) => !prevUserMenuOpen);
+    
   };
 
   const btnLogin = () => {
-    if(user.login){
-      userDispatch(setLogin(false))
-      Promise.resolve(localStorage.setItem("userData", JSON.stringify(user)))
-      .then(() => {
-        navigate("/")
-      })
-      .catch((error) => {
-        console.error("Failed to save user data:", error);
-      })
-
-    }else{
-      navigate("/Login")
+    if (user.login) {
+      const changueLogin = JSON.parse(localStorage.getItem("userData"));
+      changueLogin.login = false;
+      userDispatch(setLogin(false));
+      Promise.resolve(localStorage.setItem("userData", JSON.stringify(changueLogin)))
+        .then(() => {
+          navigate("/");
+        })
+        .catch((error) => {
+          console.error("Failed to save user data:", error);
+        });
+    } else {
+      navigate("/Login");
     }
+  };
+
+  const btnDeleteAccount = () => {
+    localStorage.clear();
+    userDispatch(clearData());
+    setDeleteAccount(false);
+    setUserMenuOpen(false)
+    navigate("/")
   }
 
-  useEffect(() => {
+  /* useEffect(() => {
     localStorage.setItem("userData", JSON.stringify(user));
-  },[user.login])
+  }, [user.login]); */
 
   return (
     <HeaderWrapper $shrink={isScrolled}>
@@ -74,24 +86,45 @@ const Header = () => {
             <Image src={Logo} alt={"Logo"} />
           </LogoContainer>
         </Link>
-        <GeneralContainer onClick={userMenu}>
-          <UserContainer>
-            <IconContext.Provider value={{ className: "icons-header" }}>
-              <FaUser />
-            </IconContext.Provider>
-          </UserContainer>
-          <CartContainer>
-            <IconContext.Provider value={{ className: "icons-header" }}>
-              <FaCartShopping />
-            </IconContext.Provider>
-            <a>{amount}</a>
-          </CartContainer>
+        <GeneralContainer>
+          <div onClick={userMenu} className="iconsContainer">
+            <UserContainer>
+              <IconContext.Provider value={{ className: "icons-header" }}>
+                <FaUser />
+              </IconContext.Provider>
+            </UserContainer>
+            <CartContainer>
+              <IconContext.Provider value={{ className: "icons-header" }}>
+                <FaCartShopping />
+              </IconContext.Provider>
+              <a>{amount}</a>
+            </CartContainer>
+          </div>
 
           {userMenuOpen ? (
             <UserMenu>
               <div className="userContainer">
                 <p>{user.login ? user.user : "Login"}</p>
-                <Button text={user.login ? "Logout" : "Login"} onClick={btnLogin} />
+                <Button
+                  text={user.login ? "Logout" : "Login"}
+                  onClick={btnLogin}
+                />
+
+                {user.login ? (
+                  <p onClick={() => setDeleteAccount(true)}>Delete Account</p>
+                ) : null}
+                {deleteAccount ? (
+                  <>
+                    <Button text="Yes" onClick={()=>setConfirmDelete(true)} />
+                    {
+                      confirmDelete ? <p>Confirm delete your account? <b onClick={()=>btnDeleteAccount()}>YES</b></p> : null
+                    }
+                    <Button text="No" onClick={() => (
+                      setDeleteAccount(false),
+                      setConfirmDelete(false)  
+                    )} />
+                  </>
+                ) : null}
               </div>
             </UserMenu>
           ) : null}

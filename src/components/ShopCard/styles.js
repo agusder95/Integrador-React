@@ -19,7 +19,10 @@ export const ShopCardWrapper = styled.div`
     position: absolute;
     bottom: 20px;
     background-color: ${colors.orange};
-  } 
+  }
+  .diseabledBtn{
+    background-color: ${colors.btnDiseabled};
+  }
 `;
 
 export const ShopInfoContainer = styled.div`

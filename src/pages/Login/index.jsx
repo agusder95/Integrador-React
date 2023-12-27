@@ -27,7 +27,6 @@ const Login = () => {
   const userData = useSelector((state) => state.userInfo);
 
   const addNewUser = (values) => {
-    console.log(values.userName, values.password);
     dispatchUser(
       addUser({
         user: values.userName,
@@ -46,11 +45,12 @@ const Login = () => {
       });
   };
 
+  /* Local Store Data Login */
   useEffect(() => {
-    /* Local Store Data Login */
-    localStorage.setItem("userData", JSON.stringify(userData));
+    if (userData.user !== "" || localStorage.getItem("userData") === null) {
+      localStorage.setItem("userData", JSON.stringify(userData));
+    }
   }, [userData.login]);
-
 
   const loginUser = (e) => {
     e.preventDefault();
@@ -58,18 +58,24 @@ const Login = () => {
     const inputPass = e.target.userPassword.value;
 
     if (
-      /* Import Local Store Data Login */
-      /* const storedData = localStorage.getItem('userData');
-    const userDataLocSto = storedData ? JSON.parse(storedData) : null; */
-
       inputUser === userData.user &&
       inputPass ===
-        userData.pass /*  || (inputUser === userDataLocSto.user && inputPass === userDataLocSto.pass) */
+        userData.pass /*  || (inputUser === userDataLocSto.user && inputPass === userDataLocSto.pass) */ &&
+      (inputUser && inputPass) !== ""
     ) {
       dispatchUser(setLogin(true));
-      console.log("Login");
       setErrorLogin(false);
-      navigate("/Shop");
+      const changueLogin = JSON.parse(localStorage.getItem("userData"));
+      changueLogin.login = true;
+      Promise.resolve(
+        localStorage.setItem("userData", JSON.stringify(changueLogin))
+      )
+        .then(() => {
+          navigate("/Shop");
+        })
+        .catch((error) => {
+          console.error("Failed to save user data:", error);
+        });
     } else {
       setErrorLogin(true);
     }

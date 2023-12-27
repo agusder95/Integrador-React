@@ -1,13 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const storedData = localStorage.getItem("userData");
-const isLogin = storedData ? JSON.parse(storedData) : null;
+
+
+const storedData = JSON.parse(localStorage.getItem("userData")) ;
+const existAcc = storedData === null || storedData.user == '' ? false : true;
+/* console.log (storedData.login) */
 
 const initialState = {
-  user: isLogin ? isLogin.user : "",
+  
+  user : existAcc ? storedData.user : "",
+  pass : existAcc ? storedData.pass : "",
+  email : existAcc ? storedData.email : "",
+  login : existAcc ? storedData.login : false,
+
+  /* user: isLogin ? isLogin.user : "",
   pass: isLogin ? isLogin.pass : "",
   email: isLogin ? isLogin.email : "",
-  login: isLogin ? isLogin.login : false,
+  login: isLogin ? isLogin.login : false, */
 };
 
 const userSlice = createSlice({
@@ -27,8 +36,14 @@ const userSlice = createSlice({
         state.login = false;
       }
     },
+    clearData: (state) => {
+      state.user = "";
+      state.pass = "";
+      state.email = "";
+      state.login = false;
+    }
   },
 });
 
-export const { addUser, setLogin } = userSlice.actions;
+export const { addUser, setLogin, clearData } = userSlice.actions;
 export default userSlice.reducer;
