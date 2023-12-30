@@ -10,7 +10,7 @@ import {
   Image,
   LogoContainer,
   UserContainer,
-  UserMenu,
+
 } from "./styles";
 import { FaUser, FaCartShopping } from "react-icons/fa6";
 import Logo from "../../assets/images/Logo.png";
@@ -20,6 +20,7 @@ import MenuContext from "../../context/MenuHmb";
 import { setLogin, clearData } from "../../redux/reducers/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../Button";
+import UserMenu from "../UserMenu";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(0);
@@ -49,7 +50,7 @@ const Header = () => {
     
   };
 
-  const btnLogin = () => {
+  /* const btnLogin = () => {
     if (user.login) {
       const changueLogin = JSON.parse(localStorage.getItem("userData"));
       changueLogin.login = false;
@@ -64,20 +65,15 @@ const Header = () => {
     } else {
       navigate("/Login");
     }
-  };
+  }; */
 
-  const btnDeleteAccount = () => {
+  /* const btnDeleteAccount = () => {
     localStorage.clear();
     userDispatch(clearData());
     setDeleteAccount(false);
     setUserMenuOpen(false)
     navigate("/")
-  }
-
-  /* useEffect(() => {
-    localStorage.setItem("userData", JSON.stringify(user));
-  }, [user.login]); */
-
+  } */
   return (
     <HeaderWrapper $shrink={isScrolled}>
       <HeaderContainer>
@@ -100,8 +96,11 @@ const Header = () => {
               <a>{amount}</a>
             </CartContainer>
           </div>
-
-          {userMenuOpen ? (
+          {
+            userMenuOpen ? <UserMenu  close={()=>setUserMenuOpen(false)} /> : null  
+          }
+          
+          {/* {userMenuOpen ? (
             <UserMenu>
               <div className="userContainer">
                 <p>{user.login ? user.user : "Login"}</p>
@@ -127,7 +126,7 @@ const Header = () => {
                 ) : null}
               </div>
             </UserMenu>
-          ) : null}
+          ) : null} */}
         </GeneralContainer>
       </HeaderContainer>
       <HeaderCategoriesContainer>

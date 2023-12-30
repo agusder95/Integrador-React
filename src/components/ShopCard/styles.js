@@ -10,15 +10,21 @@ export const ShopCardWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 20px;
 
-  
+  box-shadow: 0px 0px 28px 0px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 0px 0px 28px 0px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0px 0px 28px 0px rgba(0, 0, 0, 0.35);
 
   .shopBtn {
     position: absolute;
     bottom: 20px;
     background-color: ${colors.orange};
+
+    &:active{
+      background-color: ${colors.darkOrange};
+    }
   }
   .diseabledBtn{
     background-color: ${colors.btnDiseabled};

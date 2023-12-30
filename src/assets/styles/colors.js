@@ -13,6 +13,7 @@ export const colors = {
 	green:'#226F54',
 	heroBg: '#adebff',
 	orange:'#fe9443',
+	darkOrange: `#995826`,
 	btnDiseabled: '#a35c25',
 	violet:'#e3e3ff',
 };

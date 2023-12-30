@@ -1,22 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
-
-const storedData = JSON.parse(localStorage.getItem("userData")) ;
-const existAcc = storedData === null || storedData.user == '' ? false : true;
-/* console.log (storedData.login) */
+const storedData = JSON.parse(localStorage.getItem("userData"));
+const existAcc = storedData === null || storedData.user == "" ? false : true;
 
 const initialState = {
-  
-  user : existAcc ? storedData.user : "",
-  pass : existAcc ? storedData.pass : "",
-  email : existAcc ? storedData.email : "",
-  login : existAcc ? storedData.login : false,
-
-  /* user: isLogin ? isLogin.user : "",
-  pass: isLogin ? isLogin.pass : "",
-  email: isLogin ? isLogin.email : "",
-  login: isLogin ? isLogin.login : false, */
+  user: existAcc ? storedData.user : "",
+  pass: existAcc ? storedData.pass : "",
+  email: existAcc ? storedData.email : "",
+  login: existAcc ? storedData.login : false,
 };
 
 const userSlice = createSlice({
@@ -41,7 +32,7 @@ const userSlice = createSlice({
       state.pass = "";
       state.email = "";
       state.login = false;
-    }
+    },
   },
 });
 
