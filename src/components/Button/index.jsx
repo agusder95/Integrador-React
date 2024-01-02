@@ -1,23 +1,29 @@
-import React from 'react';
-import { ButtonWrapper } from './styles';
-import PropTypes from 'prop-types';
-const Button = ({ text, className,onClick }) => {
+import React from "react";
+import { ButtonWrapper } from "./styles";
+import PropTypes from "prop-types";
+const Button = ({ text, className, onClick, type, disabled }) => {
   return (
-    <ButtonWrapper className={` ${className}`} type='button' onClick={onClick}>
+    <ButtonWrapper
+      className={` ${className}`}
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {text}
     </ButtonWrapper>
   );
 };
 
 Button.propTypes = {
-     text:PropTypes.string,
-     className:PropTypes.string,
-     onClick:PropTypes.func,
-}
+  className: PropTypes.string,
+  onClick: PropTypes.func,
+};
 
 Button.defaultProps = {
-     text:'Button',
-     onClick:()=>{},
-}
+  disabled: false,
+  text: "Button",
+  onClick: () => {},
+  type: "button",
+};
 
 export default Button;

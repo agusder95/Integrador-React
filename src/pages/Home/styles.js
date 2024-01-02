@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import { colors } from '../../assets/styles/colors';
-import SectionHome from '../../components/SectionHome';
+import { CenterWrapper } from '../../components/Center/styles';
 
 export const HomeWrapper = styled.div`
-  background-color: ${colors.secondary};
+`;
+
+export const CenterHome = styled(CenterWrapper)`
+  background-color: ${colors.heroBg};
 
   .hero{
     background-color: ${colors.heroBg};
@@ -18,6 +21,7 @@ export const HomeWrapper = styled.div`
   .contactUs{
     background-color: ${colors.violet};
   }
+  
 `;
 
 

@@ -1,16 +1,29 @@
 import styled from "styled-components";
 import { ImageWrapper } from "../Image/styles";
 import { colors } from "../../assets/styles/colors";
+import HamburgerMenu from "../HambMenu";
 
 export const HeaderWrapper = styled.header`
   display: flex;
   flex-direction: column;
-  
+
   background-color: ${colors.primary};
   width: 100%;
   position: fixed;
-  z-index: 99;
+  z-index: 50;
   top: 0;
+  transition: height 0.5s ease;
+  @media screen and (min-width: 320px) {
+    height: ${(props) => (props.$shrink ? 7 : 10)}rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    height: ${(props) => (props.$shrink ? 7 : 10)}rem;
+  }
+
+  @media screen and (min-width: 1024px) {
+    height: ${(props) => (props.$shrink ? 8 : 12)}rem;
+  }
 `;
 
 export const HeaderContainer = styled.div`
@@ -18,61 +31,104 @@ export const HeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   transition: height 0.5s ease;
+  padding-top: 1rem;
+`;
+
+export const HMHeader = styled(HamburgerMenu)`
+  z-index:20;
   @media screen and (min-width: 320px) {
-    height: ${(props) => (props.$shrink ? 80 : 150)}px;
+    .colorBar {
+      height: 3rem;
+      width: 100%;
+      background-color: ${colors.grey};
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+    }
+    .dataContent {
+      background-color: ${colors.mainWhite};
+    }
+    ul {
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      li {
+        margin-bottom: 2rem;
+      }
+    }
   }
-
   @media screen and (min-width: 768px) {
-    height: ${(props) => (props.$shrink ? 100 : 150)}px;
-  }
-
-  @media screen and (min-width: 1024px) {
-    height: ${(props) => (props.$shrink ? 100 : 180)}px;
+    display: none;
   }
 `;
 
 export const HeaderCategoriesContainer = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
 
-  display:flex;
-  align-items:flex-end;
-  ul{
-    display: flex;
-    justify-content:flex-start;
-    align-items:center;
-    color: ${colors.mainWhite};
-    overflow-y: hidden;
-    li{
-      margin-right:15px;
-      padding:.5rem 0 1rem;
-      flex: 0 0 auto;
-      &:first-child{
-        margin-left: 10px;
+  @media screen and (min-width: 320px) {
+    justify-content: flex-start;
+    margin-left: 1rem;
+    .menu2 {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    justify-content: flex-end;
+
+    .menu2 {
+      display: flex;
+      width: 100%;
+      ul {
+        display: flex;
+        justify-content: space-evenly;
+        flex-grow: 1;
+        align-items: center;
+        color: ${colors.mainWhite};
       }
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .menu2 {
+      max-width: 950px;
     }
   }
 `;
 
 export const LogoContainer = styled.div`
   cursor: pointer;
+  transition: height 0.5s ease;
   @media screen and (min-width: 320px) {
-    height: 60px;
+    height: ${(props) => (props.$shrink ? 2 : 3)}rem;
   }
 
   @media screen and (min-width: 768px) {
-    height: 100px;
+    height: ${(props) => (props.$shrink ? 2.5 : 4)}rem;
   }
 
   @media screen and (min-width: 1024px) {
-    height: 90px;
+    height: ${(props) => (props.$shrink ? 2.5 : 5)}rem;
   }
 `;
 
 export const Image = styled(ImageWrapper)``;
 export const GeneralContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  position: relative;
   max-width: 10rem;
+  padding: 0.5rem 0.6rem;
+  background-color: ${colors.secondary};
+  border-radius: 15px;
+  
+  .iconsContainer {
+    width: 100%;
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+  }
 
   @media screen and (min-width: 320px) {
     flex-grow: 1;
@@ -122,4 +178,16 @@ export const CartContainer = styled.div`
     top: -13px;
     color: ${colors.red};
   }
+`;
+
+export const UserMenu = styled.div`
+  width: 320px;
+  min-height: 500px;
+  background-color: ${colors.secondary};
+  border-radius: 10px;
+  position: absolute;
+  top: 60px;
+  right: 0px;
+  z-index: 2;
+  color: ${colors.mainWhite};
 `;

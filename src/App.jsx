@@ -1,6 +1,8 @@
-import { AppWrapper } from "./AppStyle";
+/* import { AppWrapper } from "./AppStyle"; */
+import { Provider } from "react-redux";
+import { MenuContextProvider } from "./context/MenuHmb";
 import MyRoutes from "./routes/MyRoutes";
-
+import store from "./redux/store/store"
 /* import api from "./utils/api.js";
 
 async function fetchData() {
@@ -16,15 +18,20 @@ fetchData() */
 
 function App() {
   return (
-    <AppWrapper>
-      <MyRoutes />
-    </AppWrapper>
+    <div>
+      <Provider store={store}>
+        <MenuContextProvider>
+          <MyRoutes />
+        </MenuContextProvider>
+      </Provider>
+    </div>
   );
 }
 
 export default App;
 
-{/* <nav>
+{
+  /* <nav>
   <ul>
     <li>
       <a href="/">Home</a>
@@ -34,4 +41,5 @@ export default App;
     </li>
   </ul>
 </nav>;
- */}
+ */
+}

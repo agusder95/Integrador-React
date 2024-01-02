@@ -9,9 +9,12 @@ export const colors = {
 	secondary: '#37475a',
 	red: '#F45B69',
 	greenDark: '#36453B',
-	green:'#226F54',
+	greenBk:'#96ADC8',
+	green:'#33ac63',
 	heroBg: '#adebff',
 	orange:'#fe9443',
+	darkOrange: `#995826`,
+	btnDiseabled: '#a35c25',
 	violet:'#e3e3ff',
 };
 
