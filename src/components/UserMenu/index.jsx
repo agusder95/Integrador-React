@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import {
   ListContainer,
   LoginUserContaienr,
@@ -21,7 +21,7 @@ const UserMenu = ({ close }) => {
   const [deleteAccount, setDeleteAccount] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [buyModal, setBuyModal] = useState(false);
- 
+
   const user = useSelector((state) => state.userInfo);
   const userDispatch = useDispatch();
   const productsDispatch = useDispatch();
@@ -70,14 +70,14 @@ const UserMenu = ({ close }) => {
   };
 
   const buyProducts = () => {
-    setBuyModal(true)
-  }
- 
+    setBuyModal(true);
+  };
+
   const finishPurchase = () => {
-    productsDispatch(clearCart())
+    productsDispatch(clearCart());
     localStorage.removeItem("cartItems");
-    navigate("/")
-  }
+    navigate("/");
+  };
 
   return (
     <UserMenuWrapper>
@@ -110,9 +110,9 @@ const UserMenu = ({ close }) => {
                               {product.title.slice(0, 18) +
                                 (product.title.length > 15 ? "..." : "")}
                             </p>
-                          <div className="price">
-                            <CartCounter actualProduct={product} />
-                          </div>
+                            <div className="price">
+                              <CartCounter actualProduct={product} />
+                            </div>
                           </div>
                         </div>
 
@@ -131,11 +131,12 @@ const UserMenu = ({ close }) => {
                         className={"deleteAll"}
                         onClick={deleteAllProducts}
                       />
-                      <p>
-                        Total: $
-                        {totalPrice}
-                      </p>
-                      <Button text="Buy" className={"btnBuy"} onClick={buyProducts } />
+                      <p>Total: ${totalPrice}</p>
+                      <Button
+                        text="Buy"
+                        className={"btnBuy"}
+                        onClick={buyProducts}
+                      />
                     </>
                   )}
                 </>
@@ -148,7 +149,11 @@ const UserMenu = ({ close }) => {
             {deleteAccount ? (
               <>
                 <div className="deleteAccount">
-                  <Button className={"btnAcnt"} text="Yes" onClick={() => setConfirmDelete(true)} />
+                  <Button
+                    className={"btnAcnt"}
+                    text="Yes"
+                    onClick={() => setConfirmDelete(true)}
+                  />
 
                   <Button
                     className={"btnAcnt"}
@@ -169,9 +174,14 @@ const UserMenu = ({ close }) => {
           </UserDataContainer>
         )}
       </UserMenuContainer>
-      {
-        buyModal ? <Modal title="Fishish Purchase" text="Check your email for the purchase details and payment" btnText="Home" onClick={finishPurchase} /> : null
-      }
+      {buyModal ? (
+        <Modal
+          title="Fishish Purchase"
+          text="Check your email for the purchase details and payment"
+          btnText="Home"
+          onClick={finishPurchase}
+        />
+      ) : null}
     </UserMenuWrapper>
   );
 };
