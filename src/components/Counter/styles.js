@@ -1,6 +1,16 @@
 import styled from "styled-components";
 
 export const CounterWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  p{
+    font-size:small;
+  }
+`;
+
+export const CounterContaienr = styled.div`
   width: 8rem;
 
   .counter {
@@ -13,6 +23,7 @@ export const CounterWrapper = styled.div`
       position: absolute;
       z-index: 1;
       padding: 0 0.5rem;
+      width: 2rem;
       height: 100%;
       border: none;
       background-color: transparent;
@@ -26,7 +37,7 @@ export const CounterWrapper = styled.div`
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
       }
-      &:active{
+      &:active {
         background-color: gray;
         color: white;
       }
@@ -34,11 +45,11 @@ export const CounterWrapper = styled.div`
   }
 `;
 
-export const CounterContaienr = styled.input`
+export const InputContainer = styled.input`
   border-radius: 10px;
   padding: 0.5rem 2rem;
   width: 100%;
   z-index: 0;
   text-align: center;
-  border:none
+  border: none;
 `;

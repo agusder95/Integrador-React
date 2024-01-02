@@ -11,18 +11,28 @@ export const ModalWrapper = styled.div`
      display:flex;
      justify-content: center;
      align-items:center;
+     z-index: 100;
 `;
 
 export const ModalBox = styled.div`
-  background-color: ${colors.mainWhite};
-     
+     background-color: ${colors.allWhite  };
      width:23rem;
      height:20rem;
-     /* top: calc((100vh - 20rem)/2);
-     left: calc((100vw - 23rem)/2); */
+     padding: 0 1rem;
+     text-align: center;
      border-radius: 15px;
      display: flex;
      flex-direction: column;
      align-items: center;
      justify-content: space-evenly;
+
+     .btnModal{
+        background-color: ${colors.heroBg};
+        border:none;
+        border-radius: 10px;
+        &:active{
+            background-color: ${colors.darkHeroBg};
+        }
+     }
 `;
+

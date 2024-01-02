@@ -89,6 +89,12 @@ export const Form = styled.form`
     margin-top: 1rem;
     background-color: ${colors.orange};
   }
+  .forgotPass{
+    margin-top: 1rem;
+    color: ${colors.secWhite};
+    align-self: flex-start;
+    cursor: pointer;
+  }
 `;
 
 export const PassContainer = styled.div`

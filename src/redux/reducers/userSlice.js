@@ -33,8 +33,11 @@ const userSlice = createSlice({
       state.email = "";
       state.login = false;
     },
+    NewPassword: (state, action) => {
+      state.pass = action.payload;
+    }
   },
 });
 
-export const { addUser, setLogin, clearData } = userSlice.actions;
+export const { addUser, setLogin, clearData, NewPassword } = userSlice.actions;
 export default userSlice.reducer;

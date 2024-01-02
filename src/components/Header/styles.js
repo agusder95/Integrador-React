@@ -10,7 +10,7 @@ export const HeaderWrapper = styled.header`
   background-color: ${colors.primary};
   width: 100%;
   position: fixed;
-  z-index: 99;
+  z-index: 50;
   top: 0;
   transition: height 0.5s ease;
   @media screen and (min-width: 320px) {
@@ -35,6 +35,7 @@ export const HeaderContainer = styled.div`
 `;
 
 export const HMHeader = styled(HamburgerMenu)`
+  z-index:20;
   @media screen and (min-width: 320px) {
     .colorBar {
       height: 3rem;

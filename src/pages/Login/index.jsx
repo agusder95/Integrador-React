@@ -58,10 +58,10 @@ const Login = () => {
     const inputPass = e.target.userPassword.value;
 
     if (
-      inputUser === userData.user &&
-      inputPass ===
-        userData.pass /*  || (inputUser === userDataLocSto.user && inputPass === userDataLocSto.pass) */ &&
-      (inputUser && inputPass) !== ""
+      inputUser === userData.user ||
+      (inputUser === userData.email &&
+        inputPass === userData.pass &&
+        (inputUser && inputPass) !== "")
     ) {
       dispatchUser(setLogin(true));
       setErrorLogin(false);
@@ -80,6 +80,10 @@ const Login = () => {
       setErrorLogin(true);
     }
   };
+
+  const forgotPass = () => {
+    navigate("/ForgotPass");
+  }
 
   const formikReg = useFormik({
     initialValues: {
@@ -152,7 +156,7 @@ const Login = () => {
           <TabContent>
             <TabPanel className={active === "tab1" ? "active" : ""}>
               <Form onSubmit={loginUser}>
-                <input type="text" name="user" placeholder="User" />
+                <input type="text" name="user" placeholder="User or Mail" />
                 <PassContainer>
                   <input
                     type={seePass ? "text" : "password"}
@@ -172,7 +176,8 @@ const Login = () => {
                   text={"Login"}
                   className={"btnRegLog"}
                   type={"submit"}
-                />
+                  />
+                  <p className="forgotPass" onClick={forgotPass}>Forgot Password?</p>
               </Form>
             </TabPanel>
             <TabPanel className={active === "tab2" ? "active" : ""}>

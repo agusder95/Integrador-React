@@ -4,10 +4,10 @@ import Button from "../Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Modal from "../Modal";
-
+import { useNavigate } from "react-router-dom";
 const ContactForm = () => {
   const [showModal, setShowModal] = useState(false);
-
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       fName: "",
@@ -37,9 +37,7 @@ const ContactForm = () => {
   return (
     <ContactFormWrapper>
       <h1>Contact Us</h1>
-      <p className="test" style={{ color: "black" }}>
-        fdfdsfd
-      </p>
+      
       <Form onSubmit={formik.handleSubmit}>
         <input
           type="text"
@@ -83,7 +81,7 @@ const ContactForm = () => {
         />
       </Form>
       {showModal ? (
-        <Modal btnText={"Back to Home"} title={"Thank You!"} text={"We'll get back to you soon"} page={"/"} />
+        <Modal btnText={"Back to Home"} title={"Thank You!"} text={"We'll get back to you soon"} onClick={() => navigate("/")} />
       ) : null}
     </ContactFormWrapper>
   );
