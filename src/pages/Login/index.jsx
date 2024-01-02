@@ -156,7 +156,7 @@ const Login = () => {
           <TabContent>
             <TabPanel className={active === "tab1" ? "active" : ""}>
               <Form onSubmit={loginUser}>
-                <input type="text" name="user" placeholder="User or Mail" />
+                <input type="text" name="user" placeholder="User o Email" />
                 <PassContainer>
                   <input
                     type={seePass ? "text" : "password"}

@@ -7,7 +7,7 @@ export const ForgotPassWrapper = styled.div`
 `;
 
 export const ForgotPassContainer = styled(CenterWrapper)`
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   background-color: ${colors.greenBk};
   display: flex;

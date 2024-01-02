@@ -7,7 +7,7 @@ export const LoginWrapper = styled.div`
 `;
 
 export const LoginContainer = styled(CenterWrapper)`
-  height: 100vh;
+  min-height: 100vh;
   background-color: ${colors.greenBk};
 `;
 

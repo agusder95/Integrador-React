@@ -117,7 +117,7 @@ export const ListProduct = styled.li`
 
 export const ProductListContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -129,12 +129,15 @@ export const ProductListContainer = styled.div`
     flex-direction: row;
     align-items: center;
     width: 100%;
+    height: 100%;
     .NamePrice{
       margin-left: 1rem;
-      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content:space-around;
       .price{
-        display: flex;
-        justify-content: space-between;
+        width:10rem;
       }
     }
     
@@ -151,8 +154,8 @@ export const ProductListContainer = styled.div`
   }
 
   .ProductImgContainer{
-    height:4rem;
-    width: 4rem;
+    height:5rem;
+    width: 5rem;
     img{
       border-top-left-radius:5px;
       border-bottom-left-radius:5px;
