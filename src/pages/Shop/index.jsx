@@ -140,10 +140,12 @@ const Shop = () => {
     return <p>Error {errorCategories.message}</p>;
   }
 
+  console.log(dataCategories)
+
   return (
     <ShopWrapper>
       <Layout>
-        <CenterShop>
+        {/* <CenterShop>
           <TopContainer>
             <h2>Filter</h2>
             <CategoryContainer>
@@ -179,7 +181,7 @@ const Shop = () => {
             disabled={!more}
             onClick={() => chargueMore()}
           />
-        </CenterShop>
+        </CenterShop> */}
       </Layout>
     </ShopWrapper>
   );
