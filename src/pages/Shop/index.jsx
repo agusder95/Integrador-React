@@ -77,7 +77,7 @@ const Shop = () => {
     }
   };
 
-  const changueCategory = (category) => {
+  const changeCategory = (category) => {
     if (itemSerch) {
       setItemSerch(``);
     }
@@ -89,9 +89,13 @@ const Shop = () => {
   };
 
   const renderCategories = () => {
-    let categories = ["all", ...dataCategories];
+    // Check if dataCategories is an array of objects and handle accordingly
+    const categories = Array.isArray(dataCategories) 
+      ? ["all", ...dataCategories.map(cat => cat.name)] 
+      : ["all"];
+    
     return (
-      <SelectCategory onChange={(e) => changueCategory(e.target.value)}>
+      <SelectCategory onChange={(e) => changeCategory(e.target.value)}>
         {categories.map((category, index) => (
           <OptionsCategory key={index} value={category}>
             {category}
@@ -100,6 +104,7 @@ const Shop = () => {
       </SelectCategory>
     );
   };
+
 
   const renderSerch = () => {
     if (dataSerch && dataSerch.products) {
@@ -140,12 +145,13 @@ const Shop = () => {
     return <p>Error {errorCategories.message}</p>;
   }
 
-  console.log(dataCategories)
+  
 
   return (
     <ShopWrapper>
       <Layout>
-        {/* <CenterShop>
+
+        <CenterShop>
           <TopContainer>
             <h2>Filter</h2>
             <CategoryContainer>
@@ -181,7 +187,7 @@ const Shop = () => {
             disabled={!more}
             onClick={() => chargueMore()}
           />
-        </CenterShop> */}
+        </CenterShop>
       </Layout>
     </ShopWrapper>
   );
